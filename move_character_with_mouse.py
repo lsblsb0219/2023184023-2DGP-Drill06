@@ -16,9 +16,23 @@ hide_cursor()
 
 new_character_x, new_character_y = character_x, character_y
 
+onoff = True
 
 while onoff:
-    pass
+    while not character_x == hand_x and not character_y == hand_y:
+        for i in range(0, 100 + 1, 4):
+            clear_canvas()
+            TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+            character.clip_draw(frame * 100, 100 * 1, 100, 100, new_character_x, new_character_y)
+            hand.draw(hand_x, hand_y, 50, 52)
+
+            t = i / 100
+            new_character_x = (1 - t) * character_x + t * hand_x
+            new_character_y = (1 - t) * character_y + t * hand_y
+            frame = (frame + 1) % 8
+            update_canvas()
+            delay(0.05)
+        character_x, character_y = new_character_x, new_character_y
 
 close_canvas()
 
