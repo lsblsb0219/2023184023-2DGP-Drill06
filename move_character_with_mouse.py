@@ -1,3 +1,5 @@
+#2023184023 이수빈
+
 import random
 from pico2d import *
 
