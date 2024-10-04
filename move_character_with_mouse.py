@@ -37,6 +37,7 @@ while onoff:
             update_canvas()
             delay(0.05)
         character_x, character_y = new_character_x, new_character_y
+    hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
 
 close_canvas()
 
