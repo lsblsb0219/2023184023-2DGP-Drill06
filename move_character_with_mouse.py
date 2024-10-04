@@ -23,7 +23,11 @@ while onoff:
         for i in range(0, 100 + 1, 4):
             clear_canvas()
             TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-            character.clip_draw(frame * 100, 100 * 1, 100, 100, new_character_x, new_character_y)
+            if hand_x > new_character_x:
+                character.clip_draw(frame * 100, 100 * 1, 100, 100, new_character_x, new_character_y)
+            elif hand_x < new_character_x:
+                character.clip_composite_draw(frame * 100, 100 * 1, 100, 100, 0, 'h', new_character_x, new_character_y,
+                                              100, 100)
             hand.draw(hand_x, hand_y, 50, 52)
 
             t = i / 100
