@@ -10,17 +10,24 @@ TUK_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
 hand = load_image('hand_arrow.png')
 
-onoff = False
 hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
 character_x, character_y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 frame = 0
-hide_cursor()
 
 new_character_x, new_character_y = character_x, character_y
+
+def handle_events():
+    global onoff
+    events = get_events()
+    for event in events:
+        if event.type == SDL_KEYDOWN:
+            if event.key == SDLK_ESCAPE:
+                onoff = False
 
 onoff = True
 
 while onoff:
+    handle_events()
     while not character_x == hand_x and not character_y == hand_y:
         for i in range(0, 100 + 1, 4):
             clear_canvas()
@@ -42,7 +49,3 @@ while onoff:
     hand_x, hand_y = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
 
 close_canvas()
-
-
-
-
